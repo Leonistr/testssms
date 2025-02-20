@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест по базам данных в SSMS</title>
+    <style>
+	body, .question, label, input {
+            user-select: none; /* Запрещаем выделение */
+        }
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .question {
+            margin-bottom: 15px;
+        }
+        .question label {
+            display: block;
+            font-weight: bold;
+        }
+        .timer {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        #submit {
+            margin-top: 20px;
+        }
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Тест по базам данных в SQL Server Management Studio</h1>
+    <div class="timer" id="timer">Время: 00:30</div>
+    <form id="quiz-form">
+        <div class="question">
+    <label for="q1">1. Что такое SSMS?</label>
+    <input type="radio" name="q1" value="a"> A) SQL Server Management Studio<br>
+    <input type="radio" name="q1" value="b"> B) Structured Simple Management System<br>
+    <input type="radio" name="q1" value="c"> C) Simple Storage Management System<br>
+</div>
+
+<div class="question">
+    <label for="q2">2. Как создать новую базу данных в SSMS?</label>
+    <input type="radio" name="q2" value="a"> A) Использовать команду CREATE DATABASE<br>
+    <input type="radio" name="q2" value="b"> B) Нажать правой кнопкой мыши и выбрать "Создать базу данных"<br>
+    <input type="radio" name="q2" value="c"> C) Вводить SQL-запрос вручную<br>
+</div>
+
+<div class="question">
+    <label for="q3">3. Что такое индекс в базе данных?</label>
+    <input type="radio" name="q3" value="a"> A) Это структура данных, которая ускоряет поиск<br>
+    <input type="radio" name="q3" value="b"> B) Это специальная таблица для хранения данных<br>
+    <input type="radio" name="q3" value="c"> C) Это ключ, который уникально идентифицирует запись<br>
+</div>
+
+<div class="question">
+    <label for="q4">4. Какую команду используют для удаления базы данных в SSMS?</label>
+    <input type="radio" name="q4" value="a"> A) DELETE DATABASE<br>
+    <input type="radio" name="q4" value="b"> B) DROP DATABASE<br>
+    <input type="radio" name="q4" value="c"> C) REMOVE DATABASE<br>
+</div>
+
+<div class="question">
+    <label for="q5">5. Как создать таблицу в SSMS?</label>
+    <input type="radio" name="q5" value="a"> A) Команда CREATE TABLE<br>
+    <input type="radio" name="q5" value="b"> B) Команда NEW TABLE<br>
+    <input type="radio" name="q5" value="c"> C) Команда MAKE TABLE<br>
+</div>
+
+<div class="question">
+    <label for="q6">6. Как можно изменить структуру таблицы в SSMS?</label>
+    <input type="radio" name="q6" value="a"> A) Использовать команду ALTER TABLE<br>
+    <input type="radio" name="q6" value="b"> B) Использовать команду UPDATE TABLE<br>
+    <input type="radio" name="q6" value="c"> C) Использовать команду MODIFY TABLE<br>
+</div>
+
+<div class="question">
+    <label for="q7">7. Что такое первичный ключ в базе данных?</label>
+    <input type="radio" name="q7" value="a"> A) Это столбец или комбинация столбцов, который уникально идентифицирует запись в таблице<br>
+    <input type="radio" name="q7" value="b"> B) Это столбец, который используется для сортировки данных<br>
+    <input type="radio" name="q7" value="c"> C) Это столбец, который может содержать дублирующиеся значения<br>
+</div>
+
+<div class="question">
+    <label for="q8">8. Как можно добавить индекс на столбец в SSMS?</label>
+    <input type="radio" name="q8" value="a"> A) Использовать команду CREATE INDEX<br>
+    <input type="radio" name="q8" value="b"> B) Использовать команду ADD INDEX<br>
+    <input type="radio" name="q8" value="c"> C) Использовать команду INDEX CREATE<br>
+</div>
+
+<div class="question">
+    <label for="q9">9. Какой тип данных используется для хранения текста в базе данных SQL Server?</label>
+    <input type="radio" name="q9" value="a"> A) VARCHAR<br>
+    <input type="radio" name="q9" value="b"> B) TEXT<br>
+    <input type="radio" name="q9" value="c"> C) CHAR<br>
+</div>
+
+<div class="question">
+    <label for="q10">10. Как задать внешнее ключевое ограничение в SSMS?</label>
+    <input type="radio" name="q10" value="a"> A) Через команду ADD FOREIGN KEY<br>
+    <input type="radio" name="q10" value="b"> B) Через команду CREATE FOREIGN KEY<br>
+    <input type="radio" name="q10" value="c"> C) Через команду ALTER TABLE WITH FOREIGN KEY<br>
+</div>
+
+<div class="question">
+    <label for="q11">11. Как изменить имя базы данных в SSMS?</label>
+    <input type="radio" name="q11" value="a"> A) Использовать команду RENAME DATABASE<br>
+    <input type="radio" name="q11" value="b"> B) Использовать команду ALTER DATABASE<br>
+    <input type="radio" name="q11" value="c"> C) Использовать команду MODIFY DATABASE<br>
+</div>
+
+<div class="question">
+    <label for="q12">12. Какая команда используется для выборки данных из таблицы?</label>
+    <input type="radio" name="q12" value="a"> A) SELECT<br>
+    <input type="radio" name="q12" value="b"> B) RETRIEVE<br>
+    <input type="radio" name="q12" value="c"> C) FETCH<br>
+</div>
+
+<div class="question">
+    <label for="q13">13. Как можно выполнить резервное копирование базы данных в SSMS?</label>
+    <input type="radio" name="q13" value="a"> A) Использовать команду BACKUP DATABASE<br>
+    <input type="radio" name="q13" value="b"> B) Использовать команду COPY DATABASE<br>
+    <input type="radio" name="q13" value="c"> C) Использовать команду SAVE DATABASE<br>
+</div>
+
+<div class="question">
+    <label for="q14">14. Как определить структуру таблицы в SSMS?</label>
+    <input type="radio" name="q14" value="a"> A) Использовать команду SHOW TABLE<br>
+    <input type="radio" name="q14" value="b"> B) Использовать команду DESCRIBE TABLE<br>
+    <input type="radio" name="q14" value="c"> C) Использовать команду sp_help<br>
+</div>
+
+<div class="question">
+    <label for="q15">15. Что такое транзакция в базе данных?</label>
+    <input type="radio" name="q15" value="a"> A) Это группа SQL-операций, выполняемых как одно целое<br>
+    <input type="radio" name="q15" value="b"> B) Это команда для вставки данных в таблицу<br>
+    <input type="radio" name="q15" value="c"> C) Это структура для хранения индексов<br>
+</div>
+
+<div class="question">
+    <label for="q16">16. Какая команда используется для удаления данных из таблицы?</label>
+    <input type="radio" name="q16" value="a"> A) DELETE<br>
+    <input type="radio" name="q16" value="b"> B) REMOVE<br>
+    <input type="radio" name="q16" value="c"> C) TRUNCATE<br>
+</div>
+
+<div class="question">
+    <label for="q17">17. Что такое нормализация базы данных?</label>
+    <input type="radio" name="q17" value="a"> A) Процесс упорядочивания данных в таблицах для минимизации избыточности<br>
+    <input type="radio" name="q17" value="b"> B) Процесс объединения данных из разных таблиц<br>
+    <input type="radio" name="q17" value="c"> C) Процесс индексирования данных для быстрого поиска<br>
+</div>
+
+<div class="question">
+    <label for="q18">18. Как создать представление (view) в SSMS?</label>
+    <input type="radio" name="q18" value="a"> A) Использовать команду CREATE VIEW<br>
+    <input type="radio" name="q18" value="b"> B) Использовать команду CREATE TABLE<br>
+    <input type="radio" name="q18" value="c"> C) Использовать команду CREATE INDEX<br>
+</div>
+
+<div class="question">
+    <label for="q19">19. Как добавить новый столбец в таблицу?</label>
+    <input type="radio" name="q19" value="a"> A) Использовать команду ALTER TABLE ADD COLUMN<br>
+    <input type="radio" name="q19" value="b"> B) Использовать команду ADD COLUMN<br>
+    <input type="radio" name="q19" value="c"> C) Использовать команду MODIFY TABLE ADD COLUMN<br>
+</div>
+
+<div class="question">
+    <label for="q20">20. Как установить связь между двумя таблицами?</label>
+    <input type="radio" name="q20" value="a"> A) Использовать внешний ключ (foreign key)<br>
+    <input type="radio" name="q20" value="b"> B) Использовать команду INNER JOIN<br>
+    <input type="radio" name="q20" value="c"> C) Использовать команду UNION<br>
+</div>
+
+<div class="question">
+    <label for="q21">21. Как удалить столбец из таблицы в SSMS?</label>
+    <input type="radio" name="q21" value="a"> A) Использовать команду DROP COLUMN<br>
+    <input type="radio" name="q21" value="b"> B) Использовать команду DELETE COLUMN<br>
+    <input type="radio" name="q21" value="c"> C) Использовать команду REMOVE COLUMN<br>
+</div>
+
+<div class="question">
+    <label for="q22">22. Что такое JOIN в SQL?</label>
+    <input type="radio" name="q22" value="a"> A) Операция, объединяющая данные из нескольких таблиц<br>
+    <input type="radio" name="q22" value="b"> B) Операция, добавляющая данные в таблицу<br>
+    <input type="radio" name="q22" value="c"> C) Операция, создающая новый столбец<br>
+</div>
+
+<div class="question">
+    <label for="q23">23. Какой тип индекса создается по умолчанию в SSMS?</label>
+    <input type="radio" name="q23" value="a"> A) Кластеризованный индекс<br>
+    <input type="radio" name="q23" value="b"> B) Некластеризованный индекс<br>
+    <input type="radio" name="q23" value="c"> C) Уникальный индекс<br>
+</div>
+
+<div class="question">
+    <label for="q24">24. Как можно восстановить удаленную базу данных?</label>
+    <input type="radio" name="q24" value="a"> A) Использовать команду RESTORE DATABASE<br>
+    <input type="radio" name="q24" value="b"> B) Использовать команду RECOVER DATABASE<br>
+    <input type="radio" name="q24" value="c"> C) Использовать команду RESTORE BACKUP<br>
+</div>
+
+<div class="question">
+    <label for="q25">25. Что такое транзакции в SQL Server?</label>
+    <input type="radio" name="q25" value="a"> A) Механизм для обработки нескольких операций как одной задачи<br>
+    <input type="radio" name="q25" value="b"> B) Механизм для выполнения операций с высокой скоростью<br>
+    <input type="radio" name="q25" value="c"> C) Механизм для хранения временных данных<br>
+</div>
+
+<div class="question">
+    <label for="q26">26. Как управлять правами доступа к базе данных?</label>
+    <input type="radio" name="q26" value="a"> A) Использовать команды GRANT и REVOKE<br>
+    <input type="radio" name="q26" value="b"> B) Использовать команды ADD и REMOVE<br>
+    <input type="radio" name="q26" value="c"> C) Использовать команды PERMISSION и REVOKE<br>
+</div>
+
+<div class="question">
+    <label for="q27">27. Что такое пользователь в базе данных?</label>
+    <input type="radio" name="q27" value="a"> A) Это объект, который имеет права доступа к базе данных<br>
+    <input type="radio" name="q27" value="b"> B) Это процесс, который управляет базой данных<br>
+    <input type="radio" name="q27" value="c"> C) Это таблица, которая хранит информацию о пользователях<br>
+</div>
+
+<div class="question">
+    <label for="q28">28. Как создать резервную копию базы данных?</label>
+    <input type="radio" name="q28" value="a"> A) Использовать команду BACKUP DATABASE<br>
+    <input type="radio" name="q28" value="b"> B) Использовать команду BACKUP BACKUP<br>
+    <input type="radio" name="q28" value="c"> C) Использовать команду SAVE DATABASE<br>
+</div>
+
+<div class="question">
+    <label for="q29">29. Как просматривать логи ошибок SQL Server?</label>
+    <input type="radio" name="q29" value="a"> A) Использовать SQL Server Error Log Viewer<br>
+    <input type="radio" name="q29" value="b"> B) Использовать команду VIEW LOG<br>
+    <input type="radio" name="q29" value="c"> C) Использовать команду SHOW ERRORS<br>
+</div>
+
+<div class="question">
+    <label for="q30">30. Как объединить результаты из нескольких таблиц в SQL?</label>
+    <input type="radio" name="q30" value="a"> A) Использовать JOIN<br>
+    <input type="radio" name="q30" value="b"> B) Использовать UNION<br>
+    <input type="radio" name="q30" value="c"> C) Использовать INTERSECT<br>
+</div>
+<div class="question">
+    <label for="q31">31. Что такое SQL Server Management Studio (SSMS)?</label>
+    <input type="radio" name="q31" value="a"> A) Инструмент для анализа и мониторинга SQL Server<br>
+    <input type="radio" name="q31" value="b"> B) Программное обеспечение для разработки игр<br>
+    <input type="radio" name="q31" value="c"> C) Утилита для создания текстовых документов<br>
+</div>
+
+<div class="question">
+    <label for="q32">32. Какой тип данных используется для хранения даты и времени в SQL Server?</label>
+    <input type="radio" name="q32" value="a"> A) DATETIME<br>
+    <input type="radio" name="q32" value="b"> B) DATE<br>
+    <input type="radio" name="q32" value="c"> C) TIME<br>
+</div>
+
+<div class="question">
+    <label for="q33">33. Какой тип данных можно использовать для хранения строк фиксированной длины в SQL Server?</label>
+    <input type="radio" name="q33" value="a"> A) CHAR<br>
+    <input type="radio" name="q33" value="b"> B) VARCHAR<br>
+    <input type="radio" name="q33" value="c"> C) TEXT<br>
+</div>
+
+<div class="question">
+    <label for="q34">34. Что делает команда `DROP TABLE` в SQL Server?</label>
+    <input type="radio" name="q34" value="a"> A) Удаляет таблицу и все ее данные<br>
+    <input type="radio" name="q34" value="b"> B) Удаляет только структуру таблицы<br>
+    <input type="radio" name="q34" value="c"> C) Удаляет только данные из таблицы<br>
+</div>
+
+<div class="question">
+    <label for="q35">35. Какой командой можно обновить данные в таблице?</label>
+    <input type="radio" name="q35" value="a"> A) UPDATE<br>
+    <input type="radio" name="q35" value="b"> B) MODIFY<br>
+    <input type="radio" name="q35" value="c"> C) CHANGE<br>
+</div>
+
+<div class="question">
+    <label for="q36">36. Что такое схема базы данных?</label>
+    <input type="radio" name="q36" value="a"> A) Структура, определяющая организацию данных в базе<br>
+    <input type="radio" name="q36" value="b"> B) Группа таблиц, связанных между собой<br>
+    <input type="radio" name="q36" value="c"> C) Класс, описывающий таблицы и их связи<br>
+</div>
+
+<div class="question">
+    <label for="q37">37. Какой индекс является основным в SQL Server?</label>
+    <input type="radio" name="q37" value="a"> A) Уникальный индекс<br>
+    <input type="radio" name="q37" value="b"> B) Кластеризованный индекс<br>
+    <input type="radio" name="q37" value="c"> C) Некластеризованный индекс<br>
+</div>
+
+<div class="question">
+    <label for="q38">38. Как можно изменить тип данных столбца в SQL Server?</label>
+    <input type="radio" name="q38" value="a"> A) Использовать команду ALTER COLUMN<br>
+    <input type="radio" name="q38" value="b"> B) Использовать команду MODIFY COLUMN<br>
+    <input type="radio" name="q38" value="c"> C) Использовать команду CHANGE COLUMN<br>
+</div>
+
+<div class="question">
+    <label for="q39">39. Какое ключевое слово используется для объединения таблиц в SQL?</label>
+    <input type="radio" name="q39" value="a"> A) UNION<br>
+    <input type="radio" name="q39" value="b"> B) JOIN<br>
+    <input type="radio" name="q39" value="c"> C) MERGE<br>
+</div>
+
+<div class="question">
+    <label for="q40">40. Как создать резервную копию базы данных в SQL Server?</label>
+    <input type="radio" name="q40" value="a"> A) BACKUP DATABASE<br>
+    <input type="radio" name="q40" value="b"> B) SAVE DATABASE<br>
+    <input type="radio" name="q40" value="c"> C) COPY DATABASE<br>
+</div>
+
+<div class="question">
+    <label for="q41">41. Какое ключевое слово используется для вставки данных в таблицу?</label>
+    <input type="radio" name="q41" value="a"> A) INSERT<br>
+    <input type="radio" name="q41" value="b"> B) ADD<br>
+    <input type="radio" name="q41" value="c"> C) PUT<br>
+</div>
+
+<div class="question">
+    <label for="q42">42. Что такое транзакция в SQL?</label>
+    <input type="radio" name="q42" value="a"> A) Группа операций, выполняемых как единое целое<br>
+    <input type="radio" name="q42" value="b"> B) Процесс резервного копирования<br>
+    <input type="radio" name="q42" value="c"> C) Операция выборки данных из базы данных<br>
+</div>
+
+<div class="question">
+    <label for="q43">43. Что такое нормализация в контексте баз данных?</label>
+    <input type="radio" name="q43" value="a"> A) Процесс минимизации избыточности данных<br>
+    <input type="radio" name="q43" value="b"> B) Процесс объединения таблиц<br>
+    <input type="radio" name="q43" value="c"> C) Процесс создания индексов<br>
+</div>
+
+<div class="question">
+    <label for="q44">44. Какой командой можно удалить строку из таблицы?</label>
+    <input type="radio" name="q44" value="a"> A) DELETE<br>
+    <input type="radio" name="q44" value="b"> B) REMOVE<br>
+    <input type="radio" name="q44" value="c"> C) TRUNCATE<br>
+</div>
+
+<div class="question">
+    <label for="q45">45. Какой командой можно изменить структуру таблицы?</label>
+    <input type="radio" name="q45" value="a"> A) ALTER TABLE<br>
+    <input type="radio" name="q45" value="b"> B) UPDATE TABLE<br>
+    <input type="radio" name="q45" value="c"> C) MODIFY TABLE<br>
+</div>
+
+<div class="question">
+    <label for="q46">46. Что такое внешний ключ (foreign key) в базе данных?</label>
+    <input type="radio" name="q46" value="a"> A) Ключ, который связывает записи в разных таблицах<br>
+    <input type="radio" name="q46" value="b"> B) Ключ, уникально идентифицирующий запись в таблице<br>
+    <input type="radio" name="q46" value="c"> C) Ключ, обеспечивающий безопасность базы данных<br>
+</div>
+
+<div class="question">
+    <label for="q47">47. Какой тип данных используется для хранения чисел с плавающей точкой в SQL Server?</label>
+    <input type="radio" name="q47" value="a"> A) FLOAT<br>
+    <input type="radio" name="q47" value="b"> B) DECIMAL<br>
+    <input type="radio" name="q47" value="c"> C) INTEGER<br>
+</div>
+
+<div class="question">
+    <label for="q48">48. Что такое индексы в SQL?</label>
+    <input type="radio" name="q48" value="a"> A) Структуры данных, которые ускоряют поиск в таблице<br>
+    <input type="radio" name="q48" value="b"> B) Операции объединения таблиц<br>
+    <input type="radio" name="q48" value="c"> C) Формы отчетности по данным в таблице<br>
+</div>
+
+<div class="question">
+    <label for="q49">49. Что делает команда `TRUNCATE TABLE`?</label>
+    <input type="radio" name="q49" value="a"> A) Удаляет все строки в таблице, но сохраняет структуру<br>
+    <input type="radio" name="q49" value="b"> B) Удаляет таблицу вместе с данными и структурой<br>
+    <input type="radio" name="q49" value="c"> C) Обновляет все данные в таблице<br>
+</div>
+
+<div class="question">
+    <label for="q50">50. Как ограничить доступ пользователя к таблице?</label>
+    <input type="radio" name="q50" value="a"> A) Использовать команду GRANT<br>
+    <input type="radio" name="q50" value="b"> B) Использовать команду DENY<br>
+    <input type="radio" name="q50" value="c"> C) Использовать команду PERMISSIONS<br>
+</div>
+
+<div class="question">
+    <label for="q51">51. Какой командой можно просмотреть структуру таблицы в SQL Server?</label>
+    <input type="radio" name="q51" value="a"> A) sp_help<br>
+    <input type="radio" name="q51" value="b"> B) sp_table<br>
+    <input type="radio" name="q51" value="c"> C) sp_structure<br>
+</div>
+
+<div class="question">
+    <label for="q52">52. Что такое подзапрос в SQL?</label>
+    <input type="radio" name="q52" value="a"> A) Запрос, вложенный в другой запрос<br>
+    <input type="radio" name="q52" value="b"> B) Запрос, который выполняется параллельно с основным запросом<br>
+    <input type="radio" name="q52" value="c"> C) Запрос, выполняющий обновление данных<br>
+</div>
+
+<div class="question">
+    <label for="q53">53. Что такое представление (VIEW) в SQL?</label>
+    <input type="radio" name="q53" value="a"> A) Запрос, который возвращает результаты как таблица<br>
+    <input type="radio" name="q53" value="b"> B) Копия таблицы, которая хранит данные<br>
+    <input type="radio" name="q53" value="c"> C) Индекс, который ускоряет выборку данных<br>
+</div>
+
+<div class="question">
+    <label for="q54">54. Какой командой можно очистить таблицу от данных в SQL Server?</label>
+    <input type="radio" name="q54" value="a"> A) TRUNCATE<br>
+    <input type="radio" name="q54" value="b"> B) DELETE<br>
+    <input type="radio" name="q54" value="c"> C) REMOVE<br>
+</div>
+
+<div class="question">
+    <label for="q55">55. Что такое репликация данных в SQL Server?</label>
+    <input type="radio" name="q55" value="a"> A) Процесс копирования данных с одной базы данных на другую<br>
+    <input type="radio" name="q55" value="b"> B) Процесс создания резервных копий данных<br>
+    <input type="radio" name="q55" value="c"> C) Процесс слияния данных из разных таблиц<br>
+</div>
+
+<div class="question">
+    <label for="q56">56. Как в SQL Server обозначается ключевое слово для создания индекса?</label>
+    <input type="radio" name="q56" value="a"> A) CREATE INDEX<br>
+    <input type="radio" name="q56" value="b"> B) ADD INDEX<br>
+    <input type="radio" name="q56" value="c"> C) NEW INDEX<br>
+</div>
+
+<div class="question">
+    <label for="q57">57. Как в SQL Server можно ограничить количество строк, возвращаемых запросом?</label>
+    <input type="radio" name="q57" value="a"> A) Использовать LIMIT<br>
+    <input type="radio" name="q57" value="b"> B) Использовать TOP<br>
+    <input type="radio" name="q57" value="c"> C) Использовать FETCH<br>
+</div>
+
+<div class="question">
+    <label for="q58">58. Как в SQL Server создать новый пользовательский объект?</label>
+    <input type="radio" name="q58" value="a"> A) Использовать команду CREATE OBJECT<br>
+    <input type="radio" name="q58" value="b"> B) Использовать команду CREATE USER<br>
+    <input type="radio" name="q58" value="c"> C) Использовать команду CREATE PROCEDURE<br>
+</div>
+
+<div class="question">
+    <label for="q59">59. Какой командой можно загрузить данные в таблицу?</label>
+    <input type="radio" name="q59" value="a"> A) BULK INSERT<br>
+    <input type="radio" name="q59" value="b"> B) INSERT<br>
+    <input type="radio" name="q59" value="c"> C) LOAD DATA<br>
+</div>
+
+<div class="question">
+    <label for="q60">60. Какой командой можно удалить все индексы в базе данных?</label>
+    <input type="radio" name="q60" value="a"> A) DROP INDEX<br>
+    <input type="radio" name="q60" value="b"> B) DELETE INDEX<br>
+    <input type="radio" name="q60" value="c"> C) REMOVE INDEX<br>
+</div>
+
+        <!-- Добавьте до 30 вопросов -->
+
+        <button type="button" id="submit">Отправить тест</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        // Таймер
+        let timeLeft = 3600; // время в минутах
+        const timerElement = document.getElementById('timer');
+        const submitButton = document.getElementById('submit');
+        
+        const timer = setInterval(() => {
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                submitTest();
+            } else {
+                timeLeft--;
+                let minutes = Math.floor(timeLeft / 60);
+                let seconds = timeLeft % 60;
+                timerElement.innerText = `Время: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }
+        }, 1000);
+
+        // Подсчет правильных ответов
+        submitButton.onclick = function() {
+            submitTest();
+        };
+
+        function submitTest() {
+            let score = 0;
+            const form = document.forms['quiz-form'];
+            const answers = {
+                q1: 'a',
+                q2: 'b',
+				q1: 'a',
+				q2: 'b',
+				q3: 'a',
+				q4: 'b',
+				q5: 'a',
+				q6: 'a',
+				q7: 'a',
+				q8: 'a',
+				q9: 'a',
+				q10: 'a',
+				q11: 'b',
+				q12: 'a',
+				q13: 'a',
+				q14: 'c',
+				q15: 'a',
+				q16: 'a',
+				q17: 'a',
+				q18: 'a',
+				q19: 'a',
+				q20: 'a',
+				q21: 'a',
+				q22: 'a',
+				q23: 'b',
+				q24: 'a',
+				q25: 'a',
+				q26: 'a',
+				q27: 'a',
+				q28: 'a',
+				q29: 'a',
+				q30: 'a',
+				q31: 'a',
+				q32: 'a',
+				q33: 'a',
+				q34: 'a',
+				q35: 'a',
+				q36: 'a',
+				q37: 'b',
+				q38: 'a',
+				q39: 'b',
+				q40: 'a',
+				q41: 'a',
+				q42: 'a',
+				q43: 'a',
+				q44: 'a',
+				q45: 'a',
+				q46: 'a',
+				q47: 'a',
+				q48: 'a',
+				q49: 'a',
+				q50: 'b',
+				q51: 'a',
+				q52: 'a',
+				q53: 'a',
+				q54: 'a',
+				q55: 'a',
+				q56: 'a',
+				q57: 'b',
+				q58: 'b',
+				q59: 'a',
+				q60: 'a',
+
+                // Добавьте правильные ответы для всех вопросов
+            };
+
+            for (let q in answers) {
+                const selectedAnswer = form.querySelector(`input[name="${q}"]:checked`);
+                if (selectedAnswer && selectedAnswer.value === answers[q]) {
+                    score++;
+                }
+            }
+
+            // Скрываем все вопросы после отправки или окончания времени
+            const questions = document.querySelectorAll('.question');
+            questions.forEach(question => {
+                question.style.display = 'none';
+            });
+
+            // Показываем результат
+            const resultElement = document.getElementById('result');
+            resultElement.innerHTML = `Ваш результат: ${score} из 60.`;
+			}
+    </script>
+</body>
+</html>
